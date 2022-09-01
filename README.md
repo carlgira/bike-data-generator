@@ -43,7 +43,7 @@ gps_locations
 ## Requirements
 
 ```
-pip install osmnx networkx scikit-learn Faker
+pip install osmnx networkx scikit-learn Faker pandas
 ```
 
 ## Configuration
