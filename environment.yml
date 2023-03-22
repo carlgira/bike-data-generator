@@ -1,0 +1,11 @@
+name: bike-generator
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  - osmnx
+  - networkx
+  - Faker
+  - pandas
+  - jupyterlab
+

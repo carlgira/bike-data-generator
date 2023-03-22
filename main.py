@@ -7,14 +7,29 @@ from datetime import date
 import os
 import datetime
 import random
+import json
+import sys
+import time
 
-number_of_users = 10
-number_of_bikes = 10
-number_of_rentals = 10
+# check that args has been passed
+config_file = sys.argv[1]
 
-file_name = "dubai.graphml"
-graph_area = "Dubai, United Arab Emirates"
-locales = ['ar']
+with open(config_file) as json_file:
+    config = json.load(json_file)
+
+
+number_of_users = config['numberOfUsers']
+number_of_bikes = config['numberOfBikes']
+
+stations = config['stations']
+stations_keys = [s["key"] for s in stations]
+
+file_name = config['fileName']
+graph_area = config['placeName']
+locales = config['locales']
+
+rain_scale = 0.25
+windy_scale = 0.1
 
 Faker.seed(42)
 fake = Faker(locales)
@@ -71,9 +86,42 @@ def generate_bikes():
     bikes_df.to_csv('data/bikes.csv')
 
 
-def generate_rentals():
+def generate_rentals(init_date, end_date):
+    count_date = init_date
+    while count_date <= end_date:
+        
+        month = [m for m in config["weather"] if m["month"] == count_date.month][0]
+        
+        while month == count_date.month:
+            day_of_week = count_date.weekday()
+            week = [w for w in config["renting"] if day_of_week in w["days"]][0]
+            for hod in range(1, 24):
+                hour = [h for h in week["hours"] if hod > week['fromHour'] and hod <= week['toHour'] ][0]
+                generate_routes(month, count_date.strftime("%d"), hour, hod, init_date, end_date)
+            count_date += datetime.timedelta(days=1)
+
+def generate_routes(month, dayOfMonth, hour, hod ,init_date, end_date):
+    routes = []
     rentals = []
     insurance_type = ['standard', 'advanced']
+    
+    rain = month['rain']
+    windy = month['windy']
+    scaleRenting = month['scaleRenting']
+    
+    # get the number of rentals using a normal distribution
+    
+    number_of_rentals = int(np.random.normal(hour['mean'], hour['std'])*scaleRenting)
+        
+    is_windy = random.random() < windy
+    is_raining = random.random() < rain
+    
+    if is_raining:
+        number_of_rentals = int(number_of_rentals * rain_scale)
+    
+    if is_windy:
+        number_of_rentals = int(number_of_rentals * windy_scale)
+
     for i in range(number_of_rentals):
         user_id = int(random.random() * number_of_users)
         bike_id = int(random.random() * number_of_bikes)
@@ -83,36 +131,31 @@ def generate_rentals():
     rentals_df = pd.DataFrame(rentals)
     rentals_df.index.name = 'id'
     rentals_df.to_csv('data/rentals.csv')
+    
+    node_origin = random.choice(stations_keys)
+    node_destination = random.choice(stations_keys)
+    while node_origin == node_destination:
+        node_origin = random.choice(stations_keys)
+        node_destination = random.choice(stations_keys)
 
+    origin_node = G.nodes.get(node_origin)
+    destination_node = G.nodes.get(node_destination)
+    distance_in_meters = nx.shortest_path_length(G, nodes[node_origin], nodes[node_destination], weight='length')
+    
+    avg_speed_meters = int(np.random.normal(9000, 2000))
+    start_date = datetime.datetime(year=init_date.year, month=month['month'], day=dayOfMonth, hour=hod, minute=random.randint(0, 59))
+    start_time = time.time(hour=hod, minute=random.randint(0, 59))
+    duration_minutes = (distance_in_meters / avg_speed_meters) * 60
+    
+    routes.append({'origin_node': nodes[node_origin], 'destination_node':  nodes[node_destination],
+                    'distance': distance_in_meters, 'avg_speed_meters': avg_speed_meters, 'start_date': start_date,
+                    'start_time': start_time, 'duration_minutes': duration_minutes,
+                    'latitude_origin': origin_node['x'], 'longitude_origin': origin_node['y'],
+                    'latitude_destination': destination_node['x'], 'longitude_destination': destination_node['y']})
 
-def generate_routes():
-    routes = []
-    for i in range(number_of_rentals):
-        distance_in_meters = 0
-        while distance_in_meters < 200 or distance_in_meters > 24000:
-            node_origin = int(random.random() * number_of_nodes)
-            node_destination = int(random.random() * number_of_nodes)
-            origin_node = G.nodes.get(nodes[node_origin])
-            destination_node = G.nodes.get(nodes[node_destination])
-            try:
-                distance_in_meters = nx.shortest_path_length(G, nodes[node_origin], nodes[node_destination], weight='length')
-            except Exception as e:
-                print(e)
-
-        avg_speed_meters = int(np.random.normal(9000, 2000))
-        start_date = fake.date_between_dates(datetime.datetime(2022, 9, 1), datetime.datetime(2022, 9, 7))
-        start_time = fake.time()
-        duration_minutes = (distance_in_meters / avg_speed_meters) * 60
-
-        routes.append({'origin_node': nodes[node_origin], 'destination_node':  nodes[node_destination],
-                       'distance': distance_in_meters, 'avg_speed_meters': avg_speed_meters, 'start_date': start_date,
-                       'start_time': start_time, 'duration_minutes': duration_minutes,
-                       'latitude_origin': origin_node['x'], 'longitude_origin': origin_node['y'],
-                       'latitude_destination': destination_node['x'], 'longitude_destination': destination_node['y']})
-
-        routes_df = pd.DataFrame(routes)
-        routes_df.index.name = 'id'
-        routes_df.to_csv('data/routes.csv')
+    routes_df = pd.DataFrame(routes)
+    routes_df.index.name = 'id'
+    routes_df.to_csv('data/routes.csv')
 
 
 def generator_gps_locations():
@@ -134,7 +177,17 @@ def generator_gps_locations():
 download_map()
 generate_users()
 generate_bikes()
-generate_rentals()
-generate_routes()
-generator_gps_locations()
+date_init = datetime.datetime(year=2019, month=1, day=1)
+# add one hour to date_init
+end_date = date_init + datetime.timedelta(hours=1)
+generate_rentals(date_init, end_date)
 
+# get latitudes and longitudes from name of place using osmnx
+def get_lat_long(place):
+    G = ox.graph_from_place(place, network_type='drive')
+    G = ox.add_edge_speeds(G)
+    G = ox.add_edge_travel_times(G)
+    nodes = list(G.nodes.keys())
+    number_of_nodes = len(nodes)
+    node = G.nodes.get(nodes[int(random.random() * number_of_nodes)])
+    return node['x'], node['y']

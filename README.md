@@ -43,7 +43,7 @@ gps_locations
 ## Requirements
 
 ```
-pip install osmnx networkx scikit-learn Faker pandas
+conda env create --file environment.yml
 ```
 
 ## Configuration

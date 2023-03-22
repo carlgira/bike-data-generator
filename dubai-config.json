@@ -1,0 +1,254 @@
+{
+    "placeName": "Dubai, United Arab Emirates",
+    "fileName": "dubai.graphml",
+    "locales": [
+        "ar"
+    ],
+    "numberOfUsers": 100,
+    "numberOfBikes": 100,
+    "renting": [
+        {
+            "days": [
+                1,
+                2,
+                3,
+                4,
+                5
+            ],
+            "hours": [
+                {
+                    "fromHour": 0,
+                    "toHour": 6,
+                    "mean": 5,
+                    "std": 2
+                },
+                {
+                    "fromHour": 6,
+                    "toHour": 8,
+                    "mean": 10,
+                    "std": 3
+                },
+                {
+                    "fromHour": 8,
+                    "toHour": 10,
+                    "mean": 30,
+                    "std": 5
+                },
+                {
+                    "fromHour": 10,
+                    "toHour": 13,
+                    "mean": 10,
+                    "std": 4
+                },
+                {
+                    "fromHour": 13,
+                    "toHour": 15,
+                    "mean": 15,
+                    "std": 3
+                },
+                {
+                    "fromHour": 15,
+                    "toHour": 16,
+                    "mean": 20,
+                    "std": 5
+                },
+                {
+                    "fromHour": 16,
+                    "toHour": 18,
+                    "mean": 15,
+                    "std": 4
+                },
+                {
+                    "fromHour": 18,
+                    "toHour": 19,
+                    "mean": 20,
+                    "std": 5
+                },
+                {
+                    "fromHour": 19,
+                    "toHour": 21,
+                    "mean": 15,
+                    "std": 5
+                },
+                {
+                    "fromHour": 21,
+                    "toHour": 24,
+                    "mean": 8,
+                    "std": 2
+                }
+            ]
+        },
+        {
+            "days": [
+                6,
+                7
+            ],
+            "hours": [
+                {
+                    "fromHour": 0,
+                    "toHour": 8,
+                    "mean": 4,
+                    "std": 1
+                },
+                {
+                    "fromHour": 8,
+                    "toHour": 11,
+                    "mean": 20,
+                    "std": 5
+                },
+                {
+                    "fromHour": 11,
+                    "toHour": 13,
+                    "mean": 15,
+                    "std": 5
+                },
+                {
+                    "fromHour": 13,
+                    "toHour": 18,
+                    "mean": 12,
+                    "std": 2
+                },
+                {
+                    "fromHour": 18,
+                    "toHour": 21,
+                    "mean": 10,
+                    "std": 5
+                },
+                {
+                    "fromHour": 21,
+                    "toHour": 24,
+                    "mean": 6,
+                    "std": 2
+                }
+            ]
+        }
+    ],
+    "weather": [
+        {
+            "month": "1",
+            "rain": "0.05",
+            "windy": "0.001",
+            "scaleRenting": "1.0"
+        },
+        {
+            "month": "2",
+            "rain": "0.05",
+            "windy": "0.001",
+            "scaleRenting": "1.0"
+        },
+        {
+            "month": "3",
+            "rain": "0.05",
+            "windy": "0.001",
+            "scaleRenting": "1.0"
+        },
+        {
+            "month": "4",
+            "rain": "0.1",
+            "windy": "0.01",
+            "scaleRenting": "0.8"
+        },
+        {
+            "month": "5",
+            "rain": "0.1",
+            "windy": "0.01",
+            "scaleRenting": "0.5"
+        },
+        {
+            "month": "6",
+            "rain": "0.05",
+            "windy": "0.01",
+            "scaleRenting": "0.1"
+        },
+        {
+            "month": "7",
+            "rain": "0.0",
+            "windy": "0.01",
+            "scaleRenting": "0.0"
+        },
+        {
+            "month": "8",
+            "rain": "0.00",
+            "windy": "0.001",
+            "scaleRenting": "0.0"
+        },
+        {
+            "month": "9",
+            "rain": "0.05",
+            "windy": "0.001",
+            "scaleRenting": "0.1"
+        },
+        {
+            "month": "10",
+            "rain": "0.1",
+            "windy": "0.001",
+            "scaleRenting": "0.1"
+        },
+        {
+            "month": "11",
+            "rain": "0.05",
+            "windy": "0.001",
+            "scaleRenting": "0.5"
+        },
+        {
+            "month": "12",
+            "rain": "0.05",
+            "windy": "0.001",
+            "scaleRenting": "0.8"
+        }
+    ],
+    "stations": [
+        {
+            "name": "Expo 2020 Dubai, dubai",
+            "key": 5285222162
+        },
+        {
+            "name": "Dubai Marina, dubai",
+            "key": 88320598
+        },
+        {
+            "name": "Barsha Heights (TECOM), dubai",
+            "key": 90162057
+        },
+        {
+            "name": "The Greens, dubai",
+            "key": 1874782466
+        },
+        {
+            "name": "Dubai Internet City, dubai",
+            "key": 1259439623
+        },
+        {
+            "name": "Dubai Media City, dubai",
+            "key": 90107947
+        },
+        {
+            "name": "Palm Jumeirah, dubai",
+            "key": 1013648574
+        },
+        {
+            "name": "Deira, dubai",
+            "key": 26379314
+        },
+        {
+            "name": "Downtown Dubai, dubai",
+            "key": 90101233
+        },
+        {
+            "name": "Dubai Canal, dubai",
+            "key": 5805322025
+        },
+        {
+            "name": "Karama, dubai",
+            "key": 31264113
+        },
+        {
+            "name": "Mankhool, dubai",
+            "key": 91477295
+        },
+        {
+            "name": "Umm Suqeim, dubai",
+            "key": 86057180
+        }
+    ]
+}
