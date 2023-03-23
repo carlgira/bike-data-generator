@@ -9,11 +9,11 @@
     "renting": [
         {
             "days": [
+                0,
                 1,
                 2,
                 3,
-                4,
-                5
+                4
             ],
             "hours": [
                 {
@@ -80,8 +80,8 @@
         },
         {
             "days": [
-                6,
-                7
+                5,
+                6
             ],
             "hours": [
                 {
@@ -128,127 +128,125 @@
             "month": "1",
             "rain": "0.05",
             "windy": "0.001",
-            "scaleRenting": "1.0"
+            "scaleRenting": "1.0",
+            "temperature": {
+                "max" : 24,
+                "min" : 14
+            }
         },
         {
             "month": "2",
             "rain": "0.05",
             "windy": "0.001",
-            "scaleRenting": "1.0"
+            "scaleRenting": "1.0",
+            "temperature": {
+                "max" : 25,
+                "min" : 16
+            }
         },
         {
             "month": "3",
             "rain": "0.05",
             "windy": "0.001",
-            "scaleRenting": "1.0"
+            "scaleRenting": "1.0",
+            "temperature": {
+                "max" : 29,
+                "min" : 18
+            }
         },
         {
             "month": "4",
             "rain": "0.1",
             "windy": "0.01",
-            "scaleRenting": "0.8"
+            "scaleRenting": "0.8",
+            "temperature": {
+                "max" : 33,
+                "min" : 21
+            }
         },
         {
             "month": "5",
             "rain": "0.1",
             "windy": "0.01",
-            "scaleRenting": "0.5"
+            "scaleRenting": "0.5",
+            "temperature": {
+                "max" : 38,
+                "min" : 25
+            }
         },
         {
             "month": "6",
             "rain": "0.05",
             "windy": "0.01",
-            "scaleRenting": "0.1"
+            "scaleRenting": "0.1",
+            "temperature": {
+                "max" : 40,
+                "min" : 28
+            }
         },
         {
             "month": "7",
             "rain": "0.0",
             "windy": "0.01",
-            "scaleRenting": "0.0"
+            "scaleRenting": "0.0",
+            "temperature": {
+                "max" : 41,
+                "min" : 30
+            }
         },
         {
             "month": "8",
             "rain": "0.00",
             "windy": "0.001",
-            "scaleRenting": "0.0"
+            "scaleRenting": "0.0",
+            "temperature": {
+                "max" : 41,
+                "min" : 31
+            }
         },
         {
             "month": "9",
             "rain": "0.05",
             "windy": "0.001",
-            "scaleRenting": "0.1"
+            "scaleRenting": "0.1",
+            "temperature": {
+                "max" : 39,
+                "min" : 28
+            }
         },
         {
             "month": "10",
             "rain": "0.1",
             "windy": "0.001",
-            "scaleRenting": "0.1"
+            "scaleRenting": "0.1",
+            "temperature": {
+                "max" : 35,
+                "min" : 24
+            }
         },
         {
             "month": "11",
             "rain": "0.05",
             "windy": "0.001",
-            "scaleRenting": "0.5"
+            "scaleRenting": "0.5",
+            "temperature": {
+                "max" : 31,
+                "min" : 20
+            }
         },
         {
             "month": "12",
             "rain": "0.05",
             "windy": "0.001",
-            "scaleRenting": "0.8"
+            "scaleRenting": "0.8",
+            "temperature": {
+                "max" : 26,
+                "min" : 16
+            }
         }
     ],
-    "stations": [
-        {
-            "name": "Expo 2020 Dubai, dubai",
-            "key": 5285222162
-        },
-        {
-            "name": "Dubai Marina, dubai",
-            "key": 88320598
-        },
-        {
-            "name": "Barsha Heights (TECOM), dubai",
-            "key": 90162057
-        },
-        {
-            "name": "The Greens, dubai",
-            "key": 1874782466
-        },
-        {
-            "name": "Dubai Internet City, dubai",
-            "key": 1259439623
-        },
-        {
-            "name": "Dubai Media City, dubai",
-            "key": 90107947
-        },
-        {
-            "name": "Palm Jumeirah, dubai",
-            "key": 1013648574
-        },
-        {
-            "name": "Deira, dubai",
-            "key": 26379314
-        },
-        {
-            "name": "Downtown Dubai, dubai",
-            "key": 90101233
-        },
-        {
-            "name": "Dubai Canal, dubai",
-            "key": 5805322025
-        },
-        {
-            "name": "Karama, dubai",
-            "key": 31264113
-        },
-        {
-            "name": "Mankhool, dubai",
-            "key": 91477295
-        },
-        {
-            "name": "Umm Suqeim, dubai",
-            "key": 86057180
-        }
-    ]
+    "stations": [{"y": 25.0696288, "x": 55.1338069, "street_count": 3, "key": 283699486, "place": "Dubai Marina, dubai"}, {"y": 25.0954155, "x": 55.1751943, "street_count": 3, "key": 1016603045, "place": "Barsha Heights (TECOM), dubai"}, {"y": 25.0922461, "x": 55.1709649, "street_count": 1, "key": 1016604730, "place": "The Greens, dubai"}, {"y": 25.0921457, "x": 55.158947, "street_count": 3, "key": 1259439465, "place": "Dubai Internet City, dubai"}, {"y": 25.0404259, "x": 55.1878507, "ref": "25", "highway": "motorway_junction", "street_count": 3, "key": 90107947, "place": "Dubai Media City, dubai"}, {"y": 25.1196352, "x": 55.1315886, "street_count": 3, "key": 1013649402, "place": "Palm Jumeirah, dubai"}, {"y": 25.2769921, "x": 55.304818, "highway": "traffic_signals", "street_count": 4, "key": 26386386, "place": "Deira, dubai"}, {"y": 25.183759, "x": 55.2530324, "street_count": 3, "key": 92701286, "place": "Downtown Dubai, dubai"}, {"y": 25.1933743, "x": 55.2942545, "highway": "motorway_junction", "street_count": 3, "key": 648796217, "place": "Dubai Canal, dubai"}, {"y": 25.2520853, "x": 55.3100011, "street_count": 4, "key": 31264113, "place": "Karama, dubai"}, {"y": 25.2465342, "x": 55.285033, "street_count": 5, "key": 92587808, "place": "Mankhool, dubai"}, {"y": 25.1341502, "x": 55.1920373, "street_count": 3, "key": 86057874, "place": "Umm Suqeim, dubai"}]
+
+
+
 }

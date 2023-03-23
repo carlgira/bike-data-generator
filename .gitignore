@@ -131,3 +131,5 @@ dmypy.json
 # Graphml files
 *.graphml
 cache
+data/*.csv
+.idea

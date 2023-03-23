@@ -1,5 +1,6 @@
 import osmnx as ox
 import warnings
+import os
 warnings.filterwarnings("ignore")
 
 
@@ -19,19 +20,29 @@ dubai_stations = ["Expo 2020 Dubai, dubai",
           ]
 
 
-def test_plots(places):
+def get_graph(graph_area):
+    go = ox.graph_from_place(graph_area, network_type='drive')
+    go = ox.add_edge_speeds(go)
+    go = ox.add_edge_travel_times(go)
+    return go
+
+def test_plots(area, places):
     result = []
+    g_area = get_graph(area)
     for place in places:
         try:
-            G = ox.graph_from_place(place, network_type='drive', simplify=False)
-            key = list(G.nodes.keys())[0]
+            g_place = get_graph(place)
+            key = list(g_place.nodes.keys())[0]
             # get lat-long coordinates for one of the points
-            #node = G.nodes.get(key)
-            result.append({"name": place, "key": key})
+            node = g_area.nodes.get(key)
+            if node is not None:
+                node['key'] = key
+                node['place'] = place
+                result.append(node)
         except:
             print("Error in ", place)
     return result
 
     
-results = test_plots(places=dubai_stations)
+results = test_plots('Dubai, United Arab Emirates', places=dubai_stations)
 print(results)
